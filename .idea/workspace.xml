@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e5acbe4-b42c-4a42-8867-24e8729c1dd6" name="默认更改列表" comment="默认更改列表">
-      <change beforePath="$PROJECT_DIR$/.idea/dnsscaner.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dnsscaner.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dnsscaner.py" beforeDir="false" afterPath="$PROJECT_DIR$/dnsscaner.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/try.py" beforeDir="false" afterPath="$PROJECT_DIR$/try.py" afterDir="false" />
-    </list>
+    <list default="true" id="9e5acbe4-b42c-4a42-8867-24e8729c1dd6" name="默认更改列表" comment="默认更改列表" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -196,6 +191,7 @@
       <workItem from="1628347617620" duration="36000" />
       <workItem from="1628431554868" duration="5792000" />
       <workItem from="1628437383543" duration="4280000" />
+      <workItem from="1628441682953" duration="148000" />
     </task>
     <task id="LOCAL-00001" summary="pip">
       <created>1628270953453</created>
@@ -246,7 +242,21 @@
       <option name="project" value="LOCAL" />
       <updated>1628347458630</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="默认更改列表">
+      <created>1628441703545</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1628441703545</updated>
+    </task>
+    <task id="LOCAL-00009" summary="默认更改列表">
+      <created>1628441735346</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1628441735346</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
