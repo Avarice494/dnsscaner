@@ -5,7 +5,6 @@
 from dns import resolver
 from qqwry import updateQQwry
 from qqwry import QQwry
-import qqwry
 import sys
 import getopt
 #
@@ -20,46 +19,63 @@ import getopt
 class dnsinfo:
 
     def A(self,dname):
-        A= resolver.query(dname,'A')
-        for i in A.response.answer:
-            dir(i)
-            print(i)
+        try:
+            A= resolver.query(dname,'A')
+            for i in A.response.answer:
+                for j in i:
+                    print(dname+":"+j.address)
+        except:
+            print(dname+" NO A text!")
 
 
     def NS(self,dname):
-        NS = resolver.query(dname,"NS")
-        for i in NS.response.answer:
-            print(i)
-
+        try:
+            NS = resolver.query(dname,"NS")
+            for i in NS.response.answer:
+                print(dname+":"+str(i))
+        except:
+            print(dname + " NO NS text!")
 
     def MX(self,dname):
-        MX =resolver.query(dname, 'MX')
-        for i in MX:
-            print('MX preference =', i.preference, 'mail exchanger =', i.exchange)
+        try:
+            MX =resolver.query(dname, 'MX')
+            for i in MX:
+                print('MX preference =', i.preference, 'mail exchanger =', i.exchange)
+        except:
+            print(dname+" NO MX text")
+
 
     def TXT(self,dname):
-        TXT = resolver.query(dname,"TXT")
-        for i in TXT.response.answer:
-            print(i)
-
+        try:
+            TXT = resolver.query(dname,"TXT")
+            for i in TXT.response.answer:
+                print(dname+":"+str(i))
+        except:
+            print(dname + " NO TXT text")
 
     def Cname(self,dname):
-        Cname = resolver.query(dname,'CNAME')
-        for i in  Cname:
-            print(i)
+        try:
+            Cname = resolver.query(dname,'CNAME')
+            for i in  Cname:
+                print(dname+":"+str(i))
+        except:
+            print(dname+" NO CNAME text")
+
 
     def SOA(self,dname):
-        SOA = resolver.query(dname,"SOA")
-        for i in SOA:
-            # print(i.serial)
-            print(i.rname)
-            # print(i.refresh)
-            # print(i.retry)
-            # print(i.expire)
-            # print(i.minimum)
-    def SRV(self):
+        try:
+            SOA = resolver.query(dname,"SOA")
+            for i in SOA:
+                print(" "+"SOA:"+str(i))
+        except:
+            print(" NO SOA text")
+
+
+    def SRV(self,dname):
         pass
-    def PTR(self):
+
+
+    def PTR(self,dname):
         pass
 
 class whoisinfo:
@@ -69,21 +85,68 @@ class whoisinfo:
     def whois(self,dname):
         wry = QQwry()
         wry.load_file("qqwryupdate.dat")
-        info = wry.lookup('127.0.0.1')
-        res= {"city":info[0],"isp":info[1]}
-        print (res)
+        try:
+            A = resolver.query(dname,'A')
+            for i in A.response.answer:
+                for j in i.items:
+                    info = wry.lookup(str(j))
+                    res = {"city": info[0], "isp": info[1]}
+                    print(res)
+        except:
+            print(dname+" NO A text!")
+
+
+
+
 if __name__ == '__main__':
-    option_arg = sys.argv();
-    option,s = getopt.getopt(option_arg,"a:mx:","help=")
     resolver = resolver.Resolver()
-    # resolver.timeout = 5
     resolver.lifetime = 5
-    #
-    #
-    a=dnsinfo()
-    a.TXT("baidu.com")
-    # # a.TXT("baidu.com")
-    # a.NS("a.shifen.com")
-    #
-    # w= whoisinfo()
-    # w.whois(1)
+
+    option_arg = sys.argv[1:]
+
+    try:
+        option,s = getopt.getopt(option_arg,"A:M:N:T:C:S:a:m:n:t:c:s:W:w:",["ALL=","all=","UPDATE=","update="])
+    except:
+        print("请输入合法参数!!")
+
+    print (option)
+    cl = dnsinfo()
+    wh = whoisinfo()
+    for o,v in option:
+        if o in ("-a","-A"):
+            print(v)
+            cl.A(v)
+        elif o in ("-m","-M"):
+            print(o)
+            cl.M(v)
+        elif o in ("-n","-N"):
+            print(o)
+            cl.NS(v)
+        elif o in ("-t","-T"):
+            print(o)
+            cl.TXT(v)
+        elif o in ("-c","-C"):
+            print(o)
+            cl.Cname(v)
+        elif o in ("-s","-S"):
+            print(o)
+            cl.SOA(v)
+        elif o in ("--all","--ALL"):
+            print(v)
+            cl.A(v)
+            cl.Cname(v)
+            cl.MX(v)
+            print(v)
+            cl.NS(v)
+            print(v)
+            cl.TXT(v)
+            cl.SOA(v)
+        elif o in ("-w","-W"):
+            print(o)
+            wh.whois(v)
+        elif o in ("--update","--UPDATE"):
+            print(o)
+            wh.update()
+        else:
+            pass
+
