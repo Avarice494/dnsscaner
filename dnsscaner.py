@@ -19,7 +19,7 @@ class dnsinfo:
             print(dname+" NO A text!")
 
 
-    def NS(self,dname):
+    def N(self,dname):
         try:
             NS = resolver.query(dname,"NS")
             for i in NS.response.answer:
@@ -27,7 +27,7 @@ class dnsinfo:
         except:
             print(dname + " NO NS text!")
 
-    def MX(self,dname):
+    def M(self,dname):
         try:
             MX =resolver.query(dname, 'MX')
             for i in MX:
@@ -36,7 +36,7 @@ class dnsinfo:
             print(dname+" NO MX text")
 
 
-    def TXT(self,dname):
+    def T(self,dname):
         try:
             TXT = resolver.query(dname,"TXT")
             for i in TXT.response.answer:
@@ -44,7 +44,7 @@ class dnsinfo:
         except:
             print(dname + " NO TXT text")
 
-    def Cname(self,dname):
+    def C(self,dname):
         try:
             Cname = resolver.query(dname,'CNAME')
             for i in  Cname:
@@ -53,7 +53,7 @@ class dnsinfo:
             print(dname+" NO CNAME text")
 
 
-    def SOA(self,dname):
+    def S(self,dname):
         try:
             SOA = resolver.query(dname,"SOA")
             for i in SOA:
@@ -86,7 +86,10 @@ class whoisinfo:
         except:
             print(dname+" NO A text!")
 
-
+class out():
+    def str(self,domain,type):
+        print(domain+":")
+        eval("cl."+type[1:].upper()+"('"+domain+"')")
 
 
 if __name__ == '__main__':
@@ -98,52 +101,61 @@ if __name__ == '__main__':
     # with open(filename, "r", encoding="utf-8") as lines:
     #     dname = lines.read()
 
-
+    #读取命令行的选项
     option_arg = sys.argv[1:]
-
     try:
         option,s = getopt.getopt(option_arg,"A:M:N:T:C:S:a:m:n:t:c:s:W:w:t:T:",["ALL=","all=","UPDATE=","update="])
     except:
         print("请输入合法参数!!")
 
+
+    #读取文件
+
     print (option)
     cl = dnsinfo()
     wh = whoisinfo()
+    ou = out()
+    # for o,v in option:
+    #     if o in ("-a","-A"):
+    #         print(v)
+    #         cl.A(v)
+    #     elif o in ("-m","-M"):
+    #         print(o)
+    #         cl.M(v)
+    #     elif o in ("-n","-N"):
+    #         print(o)
+    #         cl.NS(v)
+    #     elif o in ("-t"):
+    #         filename = v
+    #         with open(filename, "r", encoding="utf-8") as lines:
+    #             line = lines.read()
+    #             print(line)
+    #
+    #     elif o in ("-c","-C"):
+    #         print(o)
+    #         cl.Cname(v)
+    #     elif o in ("-s","-S"):
+    #         print(o)
+    #         cl.SOA(v)
+    #     elif o in ("--all","--ALL"):
+    #         print(v)
+    #         cl.A(v)
+    #         cl.Cname(v)
+    #         cl.MX(v)
+    #         print(v)
+    #         cl.NS(v)
+    #         print(v)
+    #         cl.TXT(v)
+    #         cl.SOA(v)
+    #     elif o in ("-w","-W"):
+    #         print(o)
+    #         wh.whois(v)
+    #     elif o in ("--update","--UPDATE"):
+    #         print(o)
+    #         wh.update()
+    #     else:
+    #         pass
+    #
     for o,v in option:
-        if o in ("-a","-A"):
-            print(v)
-            cl.A(v)
-        elif o in ("-m","-M"):
-            print(o)
-            cl.M(v)
-        elif o in ("-n","-N"):
-            print(o)
-            cl.NS(v)
-        elif o in ("-t","-T"):
-            print(o)
-            cl.TXT(v)
-        elif o in ("-c","-C"):
-            print(o)
-            cl.Cname(v)
-        elif o in ("-s","-S"):
-            print(o)
-            cl.SOA(v)
-        elif o in ("--all","--ALL"):
-            print(v)
-            cl.A(v)
-            cl.Cname(v)
-            cl.MX(v)
-            print(v)
-            cl.NS(v)
-            print(v)
-            cl.TXT(v)
-            cl.SOA(v)
-        elif o in ("-w","-W"):
-            print(o)
-            wh.whois(v)
-        elif o in ("--update","--UPDATE"):
-            print(o)
-            wh.update()
-        else:
-            pass
-
+        for
+            ou.str(v,o)

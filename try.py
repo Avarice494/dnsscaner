@@ -81,7 +81,7 @@ import sys
 import getopt
 
 arg = sys.argv[1:]
-opthons = getopt.getopt(arg,"t:")
+opthons,s= getopt.getopt(arg,"t:")
 print (opthons)
 for o,v in opthons:
     if o in ("-t"):
