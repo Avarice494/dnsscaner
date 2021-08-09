@@ -7,23 +7,14 @@ from qqwry import updateQQwry
 from qqwry import QQwry
 import sys
 import getopt
-#
-# filename = "domain.txt"
-# with open(filename,"r",encoding="utf-8") as lines:
-#     line = lines.read()
-#
-#     print(line)
-#
-# def A(name):
-#     A = resolver.query(name,"A")
-class dnsinfo:
 
+class dnsinfo:
+    #
     def A(self,dname):
         try:
             A= resolver.query(dname,'A')
             for i in A.response.answer:
-                for j in i:
-                    print(dname+":"+j.address)
+                print(i)
         except:
             print(dname+" NO A text!")
 
@@ -99,13 +90,19 @@ class whoisinfo:
 
 
 if __name__ == '__main__':
+    dname =""
     resolver = resolver.Resolver()
     resolver.lifetime = 5
+
+    # filename = "domain.txt"
+    # with open(filename, "r", encoding="utf-8") as lines:
+    #     dname = lines.read()
+
 
     option_arg = sys.argv[1:]
 
     try:
-        option,s = getopt.getopt(option_arg,"A:M:N:T:C:S:a:m:n:t:c:s:W:w:",["ALL=","all=","UPDATE=","update="])
+        option,s = getopt.getopt(option_arg,"A:M:N:T:C:S:a:m:n:t:c:s:W:w:t:T:",["ALL=","all=","UPDATE=","update="])
     except:
         print("请输入合法参数!!")
 

@@ -69,11 +69,27 @@ import dns
 #
 # reponse = requests.get("http://httpbin.org/ip")
 # print(reponse.text)
-import requests
+# import requests
+#
+# proxy = {
+#     'http': '218.244.147.59:3128'
+# }
+#
+# response = requests.get("http://httpbin.org/ip",proxies=proxy)
+# print(response.text)
+import sys
+import getopt
 
-proxy = {
-    'http': 'socks5://127.0.0.1:1080'
-}
+arg = sys.argv[1:]
+opthons = getopt.getopt(arg,"t:")
+print (opthons)
+for o,v in opthons:
+    if o in ("-t"):
+        filename = v
+        with open(filename, "r", encoding="utf-8") as lines:
+            line = lines.read()
+            print(line)
 
-response = requests.get("http://httpbin.org/ip",proxies=proxy)
-print(response.text)
+
+
+

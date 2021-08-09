@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e5acbe4-b42c-4a42-8867-24e8729c1dd6" name="默认更改列表" comment="默认更改列表" />
+    <list default="true" id="9e5acbe4-b42c-4a42-8867-24e8729c1dd6" name="默认更改列表" comment="默认更改列表">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dnsscaner.py" beforeDir="false" afterPath="$PROJECT_DIR$/dnsscaner.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/try.py" beforeDir="false" afterPath="$PROJECT_DIR$/try.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -55,7 +60,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -192,6 +197,11 @@
       <workItem from="1628431554868" duration="5792000" />
       <workItem from="1628437383543" duration="4280000" />
       <workItem from="1628441682953" duration="148000" />
+      <workItem from="1628477549698" duration="139000" />
+      <workItem from="1628477697845" duration="1718000" />
+      <workItem from="1628479635308" duration="595000" />
+      <workItem from="1628480241409" duration="3492000" />
+      <workItem from="1628507285052" duration="1498000" />
     </task>
     <task id="LOCAL-00001" summary="pip">
       <created>1628270953453</created>
@@ -269,8 +279,8 @@
     <option name="LAST_COMMIT_MESSAGE" value="默认更改列表" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/dnsscaner$dnsscaner__1_.coverage" NAME="dnsscaner (1) 覆盖结果" MODIFIED="1628438934430" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/dnsscaner$try.coverage" NAME="try 覆盖结果" MODIFIED="1628440791586" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/dnsscaner$dnsscaner__1_.coverage" NAME="dnsscaner (1) 覆盖结果" MODIFIED="1628502590772" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/dnsscaner$1.coverage" NAME="1 Coverage Results" MODIFIED="1628303930192" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/dnsscaner$try.coverage" NAME="try 覆盖结果" MODIFIED="1628508175010" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
