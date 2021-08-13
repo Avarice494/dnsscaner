@@ -141,7 +141,9 @@ class out():
         else:
             pass
 
-    def pro(self,o,v):
+    def txt(self,o,v):
+        pass
+    def excel(self):
         pass
 
 if __name__ == '__main__':
