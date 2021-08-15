@@ -2,70 +2,96 @@
 # 日期：2021/8/7 1:17
 # 工具：PyCharm
 # Python版本：3.6.3
+import json
+
 from dns import resolver
 from qqwry import updateQQwry
 from qqwry import QQwry
 import sys
 import getopt
-
+import whois
+import socket
+from ipwhois import IPWhois
 # import os
 # os.environ["http_proxy"] = "http://127.0.0.1:1080"
 # os.environ["https_proxy"] = "http://127.0.0.1:1080"
 #查询dns信息
+
+ec = "\r\n"
 class dnsinfo:
     #
     def A(self,dname):
+        ipaddress=" "
+        local =" "
+        wry = QQwry()
+        wry.load_file("qqwry.dat")
         try:
             A= resolver.query(dname,'A')
             for i in A.response.answer:
                 for j in i.items:
                     print("     A:"+str(j))
+                    ipaddress += str(j)+ec
+                    print(ipaddress)
+                    info = wry.lookup(str(j))
+                    res = {"city": info[0], "isp": info[1]}
+                    print("     地理位置:"+str(res))
+                    local += str(res)+ec
         except:
             print(dname+" NO A text!")
-
+        return ipaddress,local
 
     def NS(self,dname):
+        N = " "
         try:
             NS = resolver.query(dname,"NS")
             for i in NS.response.answer:
                 print("       NS:"+str(i))
+                N += "NS:"+str(i)+ec
         except:
             print(dname + " NO NS text!")
-
+        return N
     def MX(self,dname):
+        M = " "
         try:
             MX =resolver.query(dname, 'MX')
             for i in MX:
                 print('     MX preference =', i.preference, 'mail exchanger =', i.exchange)
+                M += 'MX preference ='+i.preference+'mail exchanger ='+i.exchange+ec
         except:
             print(dname+" NO MX text")
-
+        return M
 
     def TXT(self,dname):
+        T = " "
         try:
             TXT = resolver.query(dname,"TXT")
             for i in TXT.response.answer:
                 print("     TXT:"+str(i))
+                T +="TXT:"+str(i)+ec
         except:
             print(dname + " NO TXT text")
-
+        return T
     def Cname(self,dname):
+        C =" "
         try:
             Cname = resolver.query(dname,'CNAME')
             for i in  Cname:
                 print("     Cname:"+str(i))
+                C += "Cname:"+str(i)+ec
         except:
             print(dname+" NO CNAME text")
-
+        return C
 
     def SOA(self,dname):
+        S = " "
         try:
             SOA = resolver.query(dname,"SOA")
             for i in SOA:
                 print("     SOA:"+str(i))
+                S += "SOA:"+str(i)+ec
         except:
             print(" NO SOA text")
-
+        return S
 
     def SRV(self,dname):
         pass
@@ -77,20 +103,33 @@ class dnsinfo:
 #查询whois信息
 class whoisinfo:
     def Update(self):
-        ret = updateQQwry('qqwryupdate.dat')
+        ret = updateQQwry('qqwry.dat')
 
     def Whois(self,dname):
-        wry = QQwry()
-        wry.load_file("qqwryupdate.dat")
+        # print('whois:')
+        w=" "
+        obj = whois.whois(dname)
+
         try:
-            A = resolver.query(dname,'A')
-            for i in A.response.answer:
-                for j in i.items:
-                    info = wry.lookup(str(j))
-                    res = {"city": info[0], "isp": info[1]}
-                    print("     WHOIS:"+str(res))
-        except:
-            print(dname+" NO A text!")
+            # print(obj)
+            for i in obj:
+                print(i + ":" + str(obj[i]))
+                w +=i + ":" + str(obj[i])
+            pass
+        except Exception:
+            pass
+        # print('--------------------------------------------')
+        return w
+    def Ipwhoid(self,dname):
+        domain_prefix = ''
+        ip = socket.gethostbyname(domain_prefix + dname)
+        print('IPwhois:')
+        obj = IPWhois(ip)
+        try:
+            print(obj.lookup_whois())
+        except Exception:
+            pass
+        print('++++++++++++++++++++++++++++++++++++++++++++++++++++++')
 
 class out():
     def str(self,o,v):
@@ -153,6 +192,7 @@ if __name__ == '__main__':
 
 
     #读取命令行的选项
+    # sys.argv = [['1','1'],['--all', '163.com']]
     option_arg = sys.argv[1:]
     try:
         option, s = getopt.getopt(option_arg, "a:m:n:s:t:w:", ["ALL=", "all=", "UPDATE=", "update=","proxy="])

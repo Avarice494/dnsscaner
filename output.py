@@ -26,7 +26,6 @@ def read_exceal(file):
     return formdate
 # 创建模板文件，将数据写入
 def write_exceal(mode,value,outfile):
-    # value =[(1.0, '', '', '', ''), (2.0, 3.0, '', '', 5.0), ('', '', '', '', ''), ('', 4.0, '', 6.0, '') ,('', '', '', '', ''),( '', '', '', '', ''), ('', '', '', '', ''), (1.0, '', '', '', '')]
 
     rb = xlrd.open_workbook(mode, formatting_info=True)
 
@@ -54,9 +53,9 @@ def write_exceal(mode,value,outfile):
 
     wb.save(outfile)
 
-mode_file = "big.xls"
-
-a = read_exceal(mode_file)
-print(a)
-write_exceal(mode_file,a,"bbb.xls")
+# mode_file = "big.xls"
+#
+# a = read_exceal(mode_file)
+# print(a)
+# write_exceal(mode_file,a,"bbb.xls")
 
