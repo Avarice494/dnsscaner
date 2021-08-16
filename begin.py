@@ -5,7 +5,7 @@
 import dnsscaner
 import output
 import config
-import port
+# import port
 # ip_address= "目标IP"
 # ip_local="IP位置"
 # ip_auther="其他关联IP"
@@ -18,7 +18,7 @@ import port
 # user_acc="社交媒体账号"
 # user_info="人员信息"
 mode_file = "big.xls"
-domain= "163.com"
+domain= "elections.org.za"
 
 a = output.read_exceal(mode_file)
 

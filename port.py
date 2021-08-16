@@ -9,7 +9,7 @@ tmp=[]
 def  ip_port(ip,port):
     global open,tmp
     # for i in range(79,82):
-    socket.setdefaulttimeout(1)
+    socket.setdefaulttimeout(5)
     sock = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
     # print("ip_port:\r\n")
     try:
@@ -42,7 +42,7 @@ asyncio.run(main())
 #防止还没传入数据就已经将数据输出
 async def begin_port(ip):
     global open,tmp
-    for i in range(1,500):
+    for i in range(1,65536):
         threading.Thread(target=ip_port, args=(ip, i)).start()
 
         # th =  threading.Thread(target=ip_port,args=(ip,i))
@@ -69,7 +69,7 @@ def main(ip_list):
         threading.Thread(asyncio.run(asy(i))).start()
         # asyncio.run(asy("123.58.180.8"))
 
-# list = ["123.58.180.8","123.58.180.8","123.58.180.8","123.58.180.8","123.58.180.8","123.58.180.8"]
+list = ["192.168.231.16"]
 
 
 main(list)

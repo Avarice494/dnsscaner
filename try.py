@@ -1,45 +1,33 @@
-import asyncio
-import threading
-async def count():
-    # for i in range(1,4000000):
-    print("one")
-    await asyncio.sleep(1)
-    print("Two")
+#!/bin/python
+#
+import os
+import platform
 
-async def main():
-    for i  in range(0,5):
-        await threading.Thread(asyncio.gather(count(), count())).start()
-        await threading.Thread(asyncio.gather(count(), count())).start()
-        await threading.Thread(asyncio.gather(count(), count())).start()
-asyncio.run(main())
+def TestPlatform():
+    print ("----------Operation System--------------------------")
+    #Windows will be : (32bit, WindowsPE)
+    #Linux will be : (32bit, ELF)
+    print(platform.architecture())
 
+    #Windows will be : Windows-XP-5.1.2600-SP3 or Windows-post2008Server-6.1.7600
+    #Linux will be : Linux-2.6.18-128.el5-i686-with-redhat-5.3-Final
+    print(platform.platform())
 
-# from queue import Queue, LifoQueue, PriorityQueue
-#
-# # 先进先出队列
-# q = Queue(maxsize=5)
-# # 后进先出队列
-# lq = LifoQueue(maxsize=6)
-# # 优先级队列
-# pq = PriorityQueue(maxsize=5)
-#
-# for i in range(5):
-#     q.put(i)
-#     lq.put(i)
-#     pq.put(i)
-#
-# print("先进先出队列：%s;是否为空：%s；多大,%s;是否满,%s" % (q.queue, q.empty(), q.qsize(), q.full()))
-#
-# print("后进先出队列：%s;是否为空：%s;多大,%s;是否满,%s" % (lq.queue, lq.empty(), lq.qsize(), lq.full()))
-#
-# print("优先级队列：%s;是否为空：%s,多大,%s;是否满,%s" % (pq.queue, pq.empty(), pq.qsize(), pq.full()))
-#
-#
-# print(q.get(), lq.get(), pq.get())
-#
-#
-# print("先进先出队列：%s;是否为空：%s；多大,%s;是否满,%s" % (q.queue, q.empty(), q.qsize(), q.full()))
-#
-# print("后进先出队列：%s;是否为空：%s;多大,%s;是否满,%s" % (lq.queue, lq.empty(), lq.qsize(), lq.full()))
-#
-# print("优先级队列：%s;是否为空：%s,多大,%s;是否满,%s" % (pq.queue, pq.empty(), pq.qsize(), pq.full()))
+    #Windows will be : Windows
+    #Linux will be : Linux
+    print(platform.system())
+
+    print ("--------------Python Version-------------------------")
+    #Windows and Linux will be : 3.1.1 or 3.1.3
+    print(platform.python_version())
+
+def UsePlatform():
+  sysstr = platform.system()
+  if(sysstr =="Windows"):
+    print ("Call Windows tasks")
+  elif(sysstr == "Linux"):
+    print ("Call Linux tasks")
+  else:
+    print ("Other System tasks")
+
+UsePlatform()
