@@ -5,6 +5,7 @@
 import dnsscaner
 import output
 import config
+import port
 # ip_address= "目标IP"
 # ip_local="IP位置"
 # ip_auther="其他关联IP"
@@ -18,11 +19,16 @@ import config
 # user_info="人员信息"
 mode_file = "big.xls"
 domain= "163.com"
+
 a = output.read_exceal(mode_file)
+
+ip_address=[]
 for i,r in enumerate(a):
     for j,rc in enumerate(r):
         if rc == config.ip_address :
             a[i][j+1]=dnsscaner.dnsinfo.A("self",domain)[0]
+            print(dnsscaner.dnsinfo.A("self",domain)[0])
+            print(type(dnsscaner.dnsinfo.A("self",domain)[0]))
         elif rc == config.ip_local:
             a[i][j + 1] = dnsscaner.dnsinfo.A("self",domain)[1]
         elif rc == config.who:
@@ -32,7 +38,8 @@ for i,r in enumerate(a):
             a[i][j + 1] += dnsscaner.dnsinfo.Cname("self", domain)
             a[i][j + 1] += dnsscaner.dnsinfo.SOA("self", domain)
             a[i][j + 1] += dnsscaner.dnsinfo.TXT("self", domain)
-
+        # elif rc == config.port:
+        #     a[i][j + 1] = port.main(dnsscaner.dnsinfo.A("self",domain)[0])
 
 print(a)
 output.write_exceal(mode_file,a,"GGGGGGGG.xls")

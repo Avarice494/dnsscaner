@@ -5,16 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9e5acbe4-b42c-4a42-8867-24e8729c1dd6" name="默认更改列表" comment="默认更改列表">
-      <change afterPath="$PROJECT_DIR$/begin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tyr.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wappalyzer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/port.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/_2021_8_9_21_42____.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/_2021_8_9_21_42____.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dnsscaner.py" beforeDir="false" afterPath="$PROJECT_DIR$/dnsscaner.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain.txt" beforeDir="false" afterPath="$PROJECT_DIR$/domain.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output.py" beforeDir="false" afterPath="$PROJECT_DIR$/output.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qqwryupdate.dat" beforeDir="false" afterPath="$PROJECT_DIR$/qqwry.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/begin.py" beforeDir="false" afterPath="$PROJECT_DIR$/begin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/try.py" beforeDir="false" afterPath="$PROJECT_DIR$/try.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tyr.py" beforeDir="false" afterPath="$PROJECT_DIR$/tyr.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/dns/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/dns/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/dns/dnssec.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/dns/dnssec.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/dns/e164.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/dns/e164.py" afterDir="false" />
@@ -163,11 +159,8 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Administrator\Desktop\dnsscaner\venv\Scripts" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Administrator\Desktop\dnsscaner" />
-    </key>
   </component>
-  <component name="RunManager" selected="Python.output">
+  <component name="RunManager" selected="Python.begin">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="dnsscaner" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -231,7 +224,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="output" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="port" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="dnsscaner" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -241,7 +234,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/output.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/port.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -293,10 +286,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.output" />
         <item itemvalue="Python.begin" />
-        <item itemvalue="Python.tyr" />
+        <item itemvalue="Python.port" />
         <item itemvalue="Python.try" />
+        <item itemvalue="Python.tyr" />
         <item itemvalue="Python.dnsscaner (1)" />
       </list>
     </recent_temporary>
@@ -337,10 +330,6 @@
       <workItem from="1628644991729" duration="1218000" />
       <workItem from="1628820504967" duration="2321000" />
       <workItem from="1628852578016" duration="1142000" />
-      <workItem from="1628869741604" duration="395000" />
-      <workItem from="1628921399147" duration="4407000" />
-      <workItem from="1628947424139" duration="11514000" />
-      <workItem from="1628997462578" duration="19190000" />
     </task>
     <task id="LOCAL-00001" summary="pip">
       <created>1628270953453</created>
@@ -429,11 +418,21 @@
     <MESSAGE value="默认更改列表" />
     <option name="LAST_COMMIT_MESSAGE" value="默认更改列表" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/dnsscaner.py</url>
+          <line>228</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/dnsscaner$dnsscaner__1_.coverage" NAME="dnsscaner (1) 覆盖结果" MODIFIED="1629007127735" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/dnsscaner$tyr.coverage" NAME="tyr 覆盖结果" MODIFIED="1629022236377" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/dnsscaner$try.coverage" NAME="try 覆盖结果" MODIFIED="1629021197276" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/dnsscaner$output.coverage" NAME="output 覆盖结果" MODIFIED="1628958783240" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/dnsscaner$dnsscaner__1_.coverage" NAME="dnsscaner (1) 覆盖结果" MODIFIED="1628562819950" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/dnsscaner$1.coverage" NAME="1 Coverage Results" MODIFIED="1628303930192" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/dnsscaner$port.coverage" NAME="port 覆盖结果" MODIFIED="1629085222616" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/dnsscaner$try.coverage" NAME="try 覆盖结果" MODIFIED="1629086320552" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
