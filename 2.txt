@@ -1,0 +1,158 @@
+[('-f', 'domain.txt'), ('--all', '')]
+southafricanrailways.co.za
+     A:129.232.172.244
+southafricanrailways.co.za NO CNAME text
+     MX preference = 10 mail exchanger = mail.southafricanrailways.co.za.
+southafricanrailways.co.za
+       NS:southafricanrailways.co.za. 7038 IN NS ns2.webonline.biz.
+southafricanrailways.co.za. 7038 IN NS ns1.webonline.biz.
+southafricanrailways.co.za. 7038 IN NS ns3.webonline.biz.
+southafricanrailways.co.za
+     TXT:southafricanrailways.co.za. 3439 IN TXT "v=spf1 +a +mx include:_spf.webonline.biz -all"
+     SOA:ns3.webonline.biz. support.africansuntravel.com. 2018062606 10800 3600 604800 10800
+southafricanrailways.co.za
+     WHOIS:{'city': '南非', 'isp': ' CZ88.NET'}
+standardbank.co.za
+     A:104.17.172.38
+     A:104.17.173.38
+standardbank.co.za NO CNAME text
+     MX preference = 10 mail exchanger = cust47301-1.in.mailcontrol.com.
+     MX preference = 20 mail exchanger = cust47301-2.in.mailcontrol.com.
+standardbank.co.za
+       NS:standardbank.co.za. 169 IN NS ns1.standardbank.co.za.
+standardbank.co.za. 169 IN NS ns2.sbsa.com.
+standardbank.co.za
+     TXT:standardbank.co.za. 471 IN TXT "jXT6iD5B8+UkUaZFk7iLUgDkeHwt4b+shqJbFa0yL+u4JBA9dAMWxICNZtD8LHFYIGhcICXzXOeCFsgUK54CRw=="
+standardbank.co.za. 471 IN TXT "MS=ms11803924"
+standardbank.co.za. 471 IN TXT "facebook-domain-verification=3gibfv5el51rgn4hlgdrpj1n916ftc"
+standardbank.co.za. 471 IN TXT "v=spf1 include:spf1.standardbank.co.za include:spf2.standardbank.co.za include:spf3.standardbank.co.za include:spf4.standardbank.co.za ~all"
+standardbank.co.za. 471 IN TXT "adobe-idp-site-verification=73013f2d1cffafe287fb6cf43ffd973bf2e06301a469956c296150bd51565694"
+     SOA:ns1.standardbank.co.za. dnsmaster.standardbank.co.za. 2012104724 10800 3600 2419200 900
+standardbank.co.za
+     WHOIS:{'city': '美国', 'isp': 'CloudFlare公司CDN节点'}
+     WHOIS:{'city': '美国', 'isp': 'CloudFlare公司CDN节点'}
+sanlam.co.za
+     A:196.36.206.27
+sanlam.co.za NO CNAME text
+     MX preference = 5 mail exchanger = za-smtp-inbound-1.mimecast.co.za.
+     MX preference = 5 mail exchanger = za-smtp-inbound-2.mimecast.co.za.
+sanlam.co.za
+       NS:sanlam.co.za. 442 IN NS titan.is.co.za.
+sanlam.co.za. 442 IN NS jupiter.is.co.za.
+sanlam.co.za. 442 IN NS demeter.is.co.za.
+sanlam.co.za
+     TXT:sanlam.co.za. 443 IN TXT "amazonses:bDqgZZFq7sxmbXpX5NPIUrB/rAQscu25RPyfNXDTkcY="
+sanlam.co.za. 443 IN TXT "BB8E-2349-D34F-4625-CD4C-DA21-E7EC-14CE"
+sanlam.co.za. 443 IN TXT "C734-9200-F9A1-661E-0D92-4589-E05C-E59C"
+sanlam.co.za. 443 IN TXT "v=spf1 include:marketing.dynamics.com include:spf-c.za.striata.com include:za._netblocks.mimecast.com include:mktomail.com include:eversrv.com ~all"
+sanlam.co.za. 443 IN TXT "_pki-validation.sanlam.co.za"
+sanlam.co.za. 443 IN TXT "117vmgb4HbLbIU7P+/5Lw1grVtWBYJRUTs/AVyBmyfsLHpOKbY0dr3HN3vH/CAdlDjnzPInd/D9EFseT0q3bzA=="
+     SOA:ns1.is.co.za. support.is.co.za. 2021080503 28800 7200 604800 10800
+sanlam.co.za
+     WHOIS:{'city': '南非', 'isp': ' CZ88.NET'}
+nicd.ac.za
+     A:41.160.6.158
+nicd.ac.za NO CNAME text
+     MX preference = 10 mail exchanger = tls.imss.mtnbusiness.co.za.
+nicd.ac.za
+       NS:nicd.ac.za. 3444 IN NS ns1.iafrica.com.
+nicd.ac.za. 3444 IN NS ns2.iafrica.com.
+nicd.ac.za
+     TXT:nicd.ac.za. 3446 IN TXT "07052020"
+nicd.ac.za. 3446 IN TXT "MS=ms37630694"
+nicd.ac.za. 3446 IN TXT "V3zYi+QDdY3ek7mfCiQWKpBI7SpI7AnyvfEdVIhey+uN8dKVKcYs50DyoQew6UiqDlkJQyjm5czjRtbcabagRA=="
+nicd.ac.za. 3446 IN TXT "MS=0943ED44D26583C8721656BCB3890B21E9725A06"
+nicd.ac.za. 3446 IN TXT "v=spf1 include:spf.imss.mtnbusiness.co.za -all"
+     SOA:ns0.iafrica.com. dns-admin.mtnbusiness.co.za. 2021081201 43200 7200 2592000 7200
+nicd.ac.za
+     WHOIS:{'city': '南非', 'isp': ' CZ88.NET'}
+caa.co.za
+     A:196.41.208.103
+caa.co.za NO CNAME text
+     MX preference = 10 mail exchanger = za-smtp-inbound-2.mimecast.co.za.
+     MX preference = 10 mail exchanger = za-smtp-inbound-1.mimecast.co.za.
+caa.co.za
+       NS:caa.co.za. 1132 IN NS ns2.voxdns.co.za.
+caa.co.za. 1132 IN NS ns1.voxdns.co.za.
+caa.co.za
+     TXT:caa.co.za. 3448 IN TXT "7GNVH+DL+gQDtQ4a27G3WG3n5ETlR6ipheXHTBuAgAmnobfb2jThCwyO5Q8SsCwFL4FmDeaxjKTww3o+Zs+icQ=="
+caa.co.za. 3448 IN TXT "MS=ms95377755"
+caa.co.za. 3448 IN TXT "MS=39B6D791A093E9D706F1ED840BB1281FAE9E6C65"
+caa.co.za. 3448 IN TXT "v=spf1 include:spf.protection.outlook.com include:_netblocks.mimecast.com ip4:41.76.208.54 ip4:41.74.192.0/20 -all"
+     SOA:ns1.voxdns.co.za. hostmaster.voxdns.co.za. 2020101303 1209600 900 604800 3600
+caa.co.za
+     WHOIS:{'city': '南非', 'isp': ' CZ88.NET'}
+vodacom.co.za
+     A:41.192.255.27
+vodacom.co.za NO CNAME text
+     MX preference = 20 mail exchanger = cluster5a.eu.messagelabs.com.
+     MX preference = 10 mail exchanger = cluster5.eu.messagelabs.com.
+vodacom.co.za
+       NS:vodacom.co.za. 449 IN NS ns01.socialcode.biz.
+vodacom.co.za. 449 IN NS ns02.socialcode.biz.
+vodacom.co.za
+     TXT:vodacom.co.za. 454 IN TXT "hxwmrq41k99p681rnykl37hpdncfbnk2"
+vodacom.co.za. 454 IN TXT "knowbe4-site-verification=0240fd013f5f1db375ee5c1614723d7d"
+vodacom.co.za. 454 IN TXT "cisco-ci-domain-verification=92fe92a789eaf14bbdc3a2eb689be6f097ede0b221caf967dcb28b8566b6451"
+vodacom.co.za. 454 IN TXT "3HNuJ6ReuisWAJOgFGP2tHpfyfYqk6UvDAG76+7Ibqtfn78qSwf7tmSIYJuq/NSAEGV0+5VMMC4+6c2JmyXeiA=="
+vodacom.co.za. 454 IN TXT "facebook-domain-verification=13bmifwjhy4tticjazxokawyznc7h2"
+vodacom.co.za. 454 IN TXT "n30k6rz9z4t7szwzsrg1sw39pkrxhqqg"
+     SOA:ns01.socialcode.biz. domains.socialcode.biz. 2021081201 28800 3600 1209600 600
+vodacom.co.za
+     WHOIS:{'city': '南非', 'isp': ' CZ88.NET'}
+mtn.com
+     A:192.0.66.2
+mtn.com NO CNAME text
+     MX preference = 10 mail exchanger = mtn-com.mail.protection.outlook.com.
+mtn.com
+       NS:mtn.com. 1582 IN NS ns2.iafrica.com.
+mtn.com. 1582 IN NS ns1.iafrica.com.
+mtn.com
+     TXT:mtn.com. 3455 IN TXT "MS=ms73505531"
+mtn.com. 3455 IN TXT "MS=ms72257187"
+mtn.com. 3455 IN TXT "apple-domain-verification=NopZgDkJhw890ROx"
+mtn.com. 3455 IN TXT "google-site-verification=np1btGmr6zJd3muuaoP2Y_4BRwA1yGDRze23VPMGexs"
+mtn.com. 3455 IN TXT "Case # Office365 2017"
+mtn.com. 3455 IN TXT "PhX2QjxAOUCPpW+QXXW4cfTDRCyrKuKuUri1r/pb/aELFW1Gaoue7wZr/yoBpYW8FDvHyd2KTRArsEqtypAUaw=="
+     SOA:ns0.iafrica.com. dns-admin.mtnbusiness.co.za. 2021081201 43200 7200 2592000 7200
+mtn.com
+     WHOIS:{'city': '美国', 'isp': 'Automattic'}
+cellc.co.za
+     A:41.50.26.204
+cellc.co.za NO CNAME text
+     MX preference = 10 mail exchanger = za-smtp-inbound-2.mimecast.co.za.
+     MX preference = 10 mail exchanger = za-smtp-inbound-1.mimecast.co.za.
+cellc.co.za
+       NS:cellc.co.za. 7055 IN NS ns1.iafrica.com.
+cellc.co.za. 7055 IN NS ns2.iafrica.com.
+cellc.co.za
+     TXT:cellc.co.za. 3455 IN TXT "r1tNPTa/YP93pAL58gTiJspK7dk7AG0EJbeC6812ovRwcfoJKZna8AfFZMM3E0h6fxv6hBVq8U+HzqdQKktgxw=="
+cellc.co.za. 3455 IN TXT "v=spf1 mx include:insidedata.co.za include:_spf.createsend.com include:eversrv.com include:servers.mcsv.net include:za._netblocks.mimecast.com ?all"
+cellc.co.za. 3455 IN TXT "MS=3FB2D523E002EC996EB01AA3D379E3062539B6ED"
+cellc.co.za. 3455 IN TXT "google-site-verification=-XKvM9sgwmd4wdmdWSwJ000HOQGI6exd3fip3_nwDXs"
+     SOA:ns0.iafrica.com. dns-admin.mtnbusiness.co.za. 2021081201 43200 7200 2592000 7200
+cellc.co.za
+     WHOIS:{'city': '南非', 'isp': ' CZ88.NET'}
+telkom.co.tttza
+telkom.co.tttza NO A text!
+telkom.co.tttza NO CNAME text
+telkom.co.tttza NO MX text
+telkom.co.tttza
+telkom.co.tttza NO NS text!
+telkom.co.tttza
+telkom.co.tttza NO TXT text
+ NO SOA text
+telkom.co.tttza
+telkom.co.tttza NO A text!
+jozifm.com
+     A:184.168.131.241
+jozifm.com NO CNAME text
+jozifm.com NO MX text
+jozifm.com
+       NS:jozifm.com. 3455 IN NS ns58.domaincontrol.com.
+jozifm.com. 3455 IN NS ns57.domaincontrol.com.
+jozifm.com
+jozifm.com NO TXT text
+     SOA:ns57.domaincontrol.com. dns.jomax.net. 2021020207 28800 7200 604800 600
+jozifm.com
+     WHOIS:{'city': '美国', 'isp': '亚利桑那州斯科茨代尔市Go Daddy集团公司'}
