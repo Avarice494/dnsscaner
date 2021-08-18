@@ -1,33 +1,36 @@
-#!/bin/python
-#
-import os
-import platform
+k = 0
+# def int3(data, offset):
+#     global k
+#     print(data)
+#     # k +=1
+#     return data[offset] + (data[offset+1] << 8) + \
+#            (data[offset+2] << 16)
 
-def TestPlatform():
-    print ("----------Operation System--------------------------")
-    #Windows will be : (32bit, WindowsPE)
-    #Linux will be : (32bit, ELF)
-    print(platform.architecture())
+def int4(data, offset):
+    print("no1:"+str((data[offset])))
+    print((data[offset]))
 
-    #Windows will be : Windows-XP-5.1.2600-SP3 or Windows-post2008Server-6.1.7600
-    #Linux will be : Linux-2.6.18-128.el5-i686-with-redhat-5.3-Final
-    print(platform.platform())
+    print("no2:"+str((data[offset+1])))
+    print((data[offset+1]) << 8)
 
-    #Windows will be : Windows
-    #Linux will be : Linux
-    print(platform.system())
+    print("no3:"+str((data[offset+2])))
+    print((data[offset+2]) << 16)
 
-    print ("--------------Python Version-------------------------")
-    #Windows and Linux will be : 3.1.1 or 3.1.3
-    print(platform.python_version())
+    print("no4:"+str((data[offset+3])))
+    print((data[offset+3]) << 24)
 
-def UsePlatform():
-  sysstr = platform.system()
-  if(sysstr =="Windows"):
-    print ("Call Windows tasks")
-  elif(sysstr == "Linux"):
-    print ("Call Linux tasks")
-  else:
-    print ("Other System tasks")
+    return data[offset] + (data[offset+1] << 8) + \
+           (data[offset+2] << 16) + (data[offset+3] << 24)
 
-UsePlatform()
+
+with open("qqwry gbk.dat","rb") as file:
+    buffer=file.read()
+
+index_begin = int4(buffer, 8)
+# print("begin:"+str(index_begin))
+index_end = int4(buffer,16)
+# print("end:"+str(index_end))
+# for i in range(0,888):
+#     ip_begin = int4(buffer, index_begin + i * 7)
+#     offset = int3(buffer, index_begin + i * 7 + 4)
+#     print(int4(buffer, index_begin + i * 7))

@@ -14,6 +14,7 @@ def read_exceal(file):
 
     #表操作
     read  = xlrd.open_workbook(file)
+
     table = read.sheets()[0]
     r = table.nrows
     c = table.ncols

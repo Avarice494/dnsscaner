@@ -42,4 +42,4 @@ for i,r in enumerate(a):
         #     a[i][j + 1] = port.main(dnsscaner.dnsinfo.A("self",domain)[0])
 
 print(a)
-output.write_exceal(mode_file,a,"GGGGGGGG.xls")
+output.write_exceal(mode_file,a,"qweqeqweqweqeqew.xls")
