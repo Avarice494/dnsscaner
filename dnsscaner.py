@@ -4,13 +4,9 @@
 # Python版本：3.6.3
 import json
 
-
-
 from dns import resolver
 from qqwry import updateQQwry
 from qqwry import QQwry
-import sys
-import getopt
 import whois
 import socket
 from ipwhois import IPWhois
@@ -21,14 +17,13 @@ from ipwhois import IPWhois
 
 ec = "\r\n"
 class dnsinfo:
-    #
     def A(self,dname):
         ipaddress=" "
         local =" "
         wry = QQwry()
         wry.load_file("qqwry.dat")
         try:
-            A= resolver.query(dname,'A')
+            A = resolver.resolve(dname, 'A')
             for i in A.response.answer:
                 for j in i.items:
                     print("     A:"+str(j))
@@ -45,7 +40,7 @@ class dnsinfo:
     def NS(self,dname):
         N = " "
         try:
-            NS = resolver.query(dname,"NS")
+            NS = resolver.resolve(dname,"NS")
             for i in NS.response.answer:
                 print("       NS:"+str(i))
                 N += "NS:"+str(i)+ec
@@ -55,7 +50,7 @@ class dnsinfo:
     def MX(self,dname):
         M = " "
         try:
-            MX =resolver.query(dname, 'MX')
+            MX =resolver.resolve(dname, 'MX')
             for i in MX:
                 print('     MX preference =', i.preference, 'mail exchanger =', i.exchange)
                 M += 'MX preference ='+i.preference+'mail exchanger ='+i.exchange+ec
@@ -66,7 +61,7 @@ class dnsinfo:
     def TXT(self,dname):
         T = " "
         try:
-            TXT = resolver.query(dname,"TXT")
+            TXT = resolver.resolve(dname,"TXT")
             for i in TXT.response.answer:
                 print("     TXT:"+str(i))
                 T +="TXT:"+str(i)+ec
@@ -76,7 +71,7 @@ class dnsinfo:
     def Cname(self,dname):
         C =" "
         try:
-            Cname = resolver.query(dname,'CNAME')
+            Cname =resolver.resolve(dname,'CNAME')
             for i in  Cname:
                 print("     Cname:"+str(i))
                 C += "Cname:"+str(i)+ec
@@ -87,7 +82,7 @@ class dnsinfo:
     def SOA(self,dname):
         S = " "
         try:
-            SOA = resolver.query(dname,"SOA")
+            SOA = resolver.resolve(dname,"SOA")
             for i in SOA:
                 print("     SOA:"+str(i))
                 S += "SOA:"+str(i)+ec
@@ -133,99 +128,23 @@ class whoisinfo:
             pass
         print('++++++++++++++++++++++++++++++++++++++++++++++++++++++')
 
-class out():
-    def str(self,o,v):
-        # print(domain+":")
-        # print(type)
-        # try:
-        #     eval("cl."+type[1:].upper()+"('"+domain+"')")
-        # except:
-        #     eval("cl."+type[2:].upper()+"('"+domain+"')")
-        # except:
-        #     eval("wh." + type[2:].upper() + "()")
-        # except:
-        #     eval("wh."+type[2:].upper()+"()")
 
-        if o in ("-a","-A"):
-            print(v)
-            cl.A(v)
-        elif o in ("-m","-M"):
-            print(v)
-            cl.M(v)
-        elif o in ("-n","-N"):
-            print(v)
-            cl.NS(v)
-        elif o in ("-c","-C"):
-            print(v)
-            cl.Cname(v)
-        elif o in ("-s","-S"):
-            print(v)
-            cl.SOA(v)
-        elif o in ("--all","--ALL"):
-            print(v)
-            cl.A(v)
-            cl.Cname(v)
-            cl.MX(v)
-            print(v)
-            cl.NS(v)
-            print(v)
-            cl.TXT(v)
-            cl.SOA(v)
-            print(v)
-            wh.Whois(v)
-        elif o in ("-w","-W"):
-            print(v)
-            wh.Whois(v)
-        elif o in ("--update","--UPDATE"):
-            print()
-            wh.Update()
-        else:
-            pass
-
-    def txt(self,o,v):
-        pass
-    def excel(self):
-        pass
 
 if __name__ == '__main__':
-    dname =""
+    dname ="163.com"
     resolver = resolver.Resolver()
     resolver.lifetime = 5
 
+    dns = dnsinfo()
+    who = whoisinfo()
 
-    #读取命令行的选项
-    # sys.argv = [['1','1'],['--all', '163.com']]
-    option_arg = sys.argv[1:]
-    try:
-        option, s = getopt.getopt(option_arg, "a:m:n:s:t:w:", ["ALL=", "all=", "UPDATE=", "update=","proxy="])
-        print(option)
-    except getopt.GetoptError as e:
-        option,s = getopt.getopt(option_arg,"f:amnsw",["ALL","all","UPDATE","update","proxy="])
-    except BaseException as e:
-        print (e)
-    #读取文件
+    dns.NS(dname)
+    dns.A(dname)
+    dns.SOA(dname)
+    dns.Cname(dname)
+    dns.MX(dname)
+    dns.TXT(dname)
+    dns.PTR(dname)
 
-    print (option)
-    #实例化对象
-    cl = dnsinfo()
-    wh = whoisinfo()
-    ou = out()
-
-
-    #参数列表
-    list = []
-    for o, v in option:
-        if o in ("-f"):
-            filename = v
-            with open(filename, "r", encoding="utf-8") as lines:
-                line = str(lines.read())
-                line = line.strip()
-                list = line.split("\n")
-                option.pop(0)
-        else:
-            list = [v]
-
-    #结果输出
-    for o, v in option:
-        for i in list:
-                 ou.str(o,i)
+    who.Whois(dname)
+    who.Ipwhoid(dname)

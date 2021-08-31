@@ -3,7 +3,6 @@
 # 工具：PyCharm
 # Python版本：3.6.3
 import xlrd
-import xlwt
 from xlutils.filter import process, XLRDReader, XLWTWriter
 
 import os
