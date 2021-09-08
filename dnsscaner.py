@@ -1,96 +1,123 @@
-# 作者：Sceva
-# 日期：2021/8/7 1:17
-# 工具：PyCharm
-# Python版本：3.6.3
-import json
-
 from dns import resolver
 from qqwry import updateQQwry
 from qqwry import QQwry
 import whois
 import socket
 from ipwhois import IPWhois
-# import os
-# os.environ["http_proxy"] = "http://127.0.0.1:1080"
-# os.environ["https_proxy"] = "http://127.0.0.1:1080"
+
 #查询dns信息
 
-ec = "\r\n"
 class dnsinfo:
-    def A(self,dname):
-        ipaddress=" "
-        local =" "
+    """
+    初始化对象
+    """
+    def __init__(self,domain):
+        self.domain = domain
+        self.A_list = []
+        self.NS_list = []
+        self.MX_list = []
+        self.SOA_list = []
+        self.TXT_list = []
+        self.Cname_list = []
+        self.SRV_list = []
+        self.PTR_list = []
+    """
+    1.查询网站的A记录，获得其ip地址
+    2.使用其ip地址和纯真数据库获得其真实地址
+    3.如果能够查到就返回一个  ---->   [[ip,{city:city,isp:value}],[ip,{city:city,isp:value}]....]
+      如果没有查到就返回一个  ---->   ['163NO A text!']
+    """
+    def A(self):
         wry = QQwry()
         wry.load_file("qqwry.dat")
         try:
-            A = resolver.resolve(dname, 'A')
+            A = resolver.resolve(self.domain, 'A')
             for i in A.response.answer:
                 for j in i.items:
-                    print("     A:"+str(j))
-                    ipaddress += str(j)+ec
-                    print(ipaddress)
+                    tmp = []
+                    tmp.append(str(j))
                     info = wry.lookup(str(j))
                     res = {"city": info[0], "isp": info[1]}
-                    print("     地理位置:"+str(res))
-                    local += str(res)+ec
+                    tmp.append(res)
+                    self.A_list.append(tmp)
         except:
-            print(dname+" NO A text!")
-        return ipaddress,local
+            tmp =self.domain+"NO A text!"
+            self.A_list.append(tmp)
+        return self.A_list
 
-    def NS(self,dname):
-        N = " "
+
+    """
+    1.查询网站的NS记录
+    2.如果能够查到就返回一个  ---->   ['163.com. 1435 IN NS ns2.166.com.', '163.com. 1435 IN NS ns4.nease.net.'........]
+      如果没有查到就返回一个  ---->   ['{domain}NO NS text!']
+    """
+    def NS(self):
         try:
-            NS = resolver.resolve(dname,"NS")
+            NS = resolver.resolve(self.domain,"NS")
             for i in NS.response.answer:
-                print("       NS:"+str(i))
-                N += "NS:"+str(i)+ec
+                self.NS_list = str(i).split("\n")
         except:
-            print(dname + " NO NS text!")
-        return N
-    def MX(self,dname):
-        M = " "
+            self.NS_list.append(self.domain + " NO NS text!")
+        return self.NS_list
+
+    """
+    1.查询网站的MX记录
+    3.如果能够查到就返回一个  ---->   ['MX preference =10mail exchanger =163mx01.mxmail.netease.com.', 'MX preference =10mail exchanger =163mx02.mxmail.netease.com.'......]
+      如果没有查到就返回一个  ---->   ['{domain}NO MX text!']
+    """
+    def MX(self):
         try:
-            MX =resolver.resolve(dname, 'MX')
+            MX =resolver.resolve(self.domain, 'MX')
             for i in MX:
-                print('     MX preference =', i.preference, 'mail exchanger =', i.exchange)
-                M += 'MX preference ='+i.preference+'mail exchanger ='+i.exchange+ec
+                tmp = 'MX preference =' + str(i.preference) + 'mail exchanger =' + str(i.exchange)
+                self.MX_list.append(tmp)
         except:
-            print(dname+" NO MX text")
-        return M
-
-    def TXT(self,dname):
-        T = " "
+            print(self.domain+" NO MX text")
+        return self.MX_list
+    """
+    1.查询网站的TXT记录
+    2.如果能够查到就返回一个  ---->   ['163.com. 699 IN TXT "v=spf1 include:spf.163.com -all"', '163.com. 699 IN TXT "google-site-verification=hRXfNWRtd9HKlh-ZBOuUgGrxBJh526R8Uygp0jEZ9wY"',........]
+      如果没有查到就返回一个  ---->   ['163NO MX text!']
+    """
+    def TXT(self):
         try:
-            TXT = resolver.resolve(dname,"TXT")
+            TXT = resolver.resolve(self.domain,"TXT")
             for i in TXT.response.answer:
-                print("     TXT:"+str(i))
-                T +="TXT:"+str(i)+ec
+                self.TXT_list = str(i).split("\n")
         except:
-            print(dname + " NO TXT text")
-        return T
-    def Cname(self,dname):
-        C =" "
-        try:
-            Cname =resolver.resolve(dname,'CNAME')
-            for i in  Cname:
-                print("     Cname:"+str(i))
-                C += "Cname:"+str(i)+ec
-        except:
-            print(dname+" NO CNAME text")
-        return C
+            self.TXT_list.append(self.domain + " NO TXT text")
+        return self.TXT_list
 
-    def SOA(self,dname):
+    """
+    1.查询网站的TXT记录
+    2.如果能够查到就返回一个  ---->   ["xxx","xxx","xxx"..]
+      如果没有查到就返回一个  ---->   ['163NO Cname text!']
+    """
+    def Cname(self):
+        try:
+            Cname =resolver.resolve(self.domain,'CNAME')
+            for i in  Cname:
+               self.Cname_list =  str(i).split("\n")
+        except:
+            self.Cname_list.append(self.domain+" NO CNAME text")
+        return self.Cname_list
+
+    """
+    1.查询网站的TXT记录
+    2.如果能够查到就返回一个  ---->   ['dns.baidu.com.', 'sa.baidu.com.', '2012144815', '300', '300', '2592000', '7200']
+      如果没有查到就返回一个  ---->   ['163NO SOA text!']
+    """
+    def SOA(self):
         S = " "
         try:
-            SOA = resolver.resolve(dname,"SOA")
+            SOA = resolver.resolve(self.domain,"SOA")
             for i in SOA:
-                print("     SOA:"+str(i))
-                S += "SOA:"+str(i)+ec
+                self.SOA_list = str(i).split(" ")
         except:
-            print(" NO SOA text")
-        return S
+            self.SOA_list.append(self.domain+"NO SOA text")
+        return self.SOA_list
 
-    def SRV(self,dname):
+    def SRV(self):
         pass
 
 
@@ -99,52 +126,124 @@ class dnsinfo:
 
 #查询whois信息
 class whoisinfo:
+    def __init__(self,domain):
+        self.domain = domain
+        self.Whois_dic = {}
+        self.Ipwhoid_dic = {}
+
+
     def Update(self):
-        ret = updateQQwry('qqwry.dat')
+        updateQQwry('qqwry.dat')
+    """
+    1.查询网站的whois记录
+    2.如果能够查到就返回一个  ---->  {
+                                      "domain_name": [
+                                        "BAIDU.COM",
+                                        "baidu.com"
+                                      ],
+                                      "registrar": "MarkMonitor, Inc.",
+                                      "whois_server": "whois.markmonitor.com",
+                                      "referral_url": null,
+                                      "updated_date": [
+                                        "2020-12-09 04:04:41",
+                                        "2021-04-07 19:52:21+00:00"
+                                      ],
+                                      "creation_date": [
+                                        "1999-10-11 11:05:17",
+                                        "1999-10-11 11:05:17+00:00"
+                                      ],
+                                      "expiration_date": [
+                                        "2026-10-11 11:05:17",
+                                        "2026-10-11 07:00:00+00:00"
+                                      ],
+                                      "name_servers": [
+                                        "NS1.BAIDU.COM",
+                                        "NS2.BAIDU.COM",
+                                        "NS3.BAIDU.COM",
+                                        "NS4.BAIDU.COM",
+                                        "NS7.BAIDU.COM",
+                                        "ns1.baidu.com",
+                                        "ns3.baidu.com",
+                                        "ns4.baidu.com",
+                                        "ns2.baidu.com",
+                                        "ns7.baidu.com"
+                                      ],
+                                      "status": [
+                                        "clientDeleteProhibited https://icann.org/epp#clientDeleteProhibited",
+                                        "clientTransferProhibited https://icann.org/epp#clientTransferProhibited",
+                                        "clientUpdateProhibited https://icann.org/epp#clientUpdateProhibited",
+                                        "serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited",
+                                        "serverTransferProhibited https://icann.org/epp#serverTransferProhibited",
+                                        "serverUpdateProhibited https://icann.org/epp#serverUpdateProhibited",
+                                        "clientUpdateProhibited (https://www.icann.org/epp#clientUpdateProhibited)",
+                                        "clientTransferProhibited (https://www.icann.org/epp#clientTransferProhibited)",
+                                        "clientDeleteProhibited (https://www.icann.org/epp#clientDeleteProhibited)",
+                                        "serverUpdateProhibited (https://www.icann.org/epp#serverUpdateProhibited)",
+                                        "serverTransferProhibited (https://www.icann.org/epp#serverTransferProhibited)",
+                                        "serverDeleteProhibited (https://www.icann.org/epp#serverDeleteProhibited)"
+                                      ],
+                                      "emails": [
+                                        "abusecomplaints@markmonitor.com",
+                                        "whoisrequest@markmonitor.com"
+                                      ],
+                                      "dnssec": "unsigned",
+                                      "name": null,
+                                      "org": "Beijing Baidu Netcom Science Technology Co., Ltd.",
+                                      "address": null,
+                                      "city": null,
+                                      "state": "Beijing",
+                                      "zipcode": null,
+                                      "country": "CN"
+                                    }
 
-    def Whois(self,dname):
-        # print('whois:')
-        w=" "
-        obj = whois.whois(dname)
-
+      如果没有查到就返回一个  ---->  指点的所有字段都返回null
+    """
+    def Whois(self):
+        obj = whois.whois(self.domain)
         try:
-            # print(obj)
-            for i in obj:
-                print(i + ":" + str(obj[i]))
-                w +=i + ":" + str(obj[i])
+            self.Whois_dic=obj
+        except :
             pass
-        except Exception:
-            pass
-        # print('--------------------------------------------')
-        return w
-    def Ipwhoid(self,dname):
+        return self.Whois_dic
+    """
+    1.查询网站的whois记录
+    2.如果能够查到就返回一个  ---->  {
+                                    'nir': None, 
+                                    'asn_registry': 'apnic', 
+                                    'asn': '23724', 
+                                    'asn_cidr': '220.181.32.0/19', 
+                                    'asn_country_code': 'CN', 
+                                    'asn_date': '2002-10-30', 
+                                    'asn_description': 'CHINANET-IDC-BJ-AP IDC, 
+                                    China Telecommunications Corporation, CN', 
+                                    'query': '220.181.38.251', 
+                                    'nets': [{'cidr': '220.181.0.0/16', 
+                                    'name': 'CHINANET-IDC-BJ', 
+                                    'handle': 'CH93-AP', 
+                                    'range': 
+                                    '220.181.0.0 - 220.181.255.255', 
+                                    'description': 'CHINANET Beijing province network\nChina Telecom\nNo.31,
+                                    jingrong street\nBeijing 100032', 
+                                    'country': 'CN', 
+                                    'state': None, 'city': None, 
+                                    'address': 'No.31 ,j
+                                    ingrong street,beijing\n100032', 
+                                    'postal_code': None, 
+                                    'emails': ['anti-spam@ns.chinanet.cn.net', 
+                                    'bjnic@bjtelecom.net'], 
+                                    'created': None,
+                                    'updated': None}], 
+                                    'raw': None, 
+                                    'referral': None, 
+                                    'raw_referral': None}
+      如果没有查到就返回一个  ---->  {'baidu': 'ipwhois 查询错误'}
+    """
+    def Ipwhois(self):
         domain_prefix = ''
-        ip = socket.gethostbyname(domain_prefix + dname)
-        print('IPwhois:')
-        obj = IPWhois(ip)
         try:
-            print(obj.lookup_whois())
-        except Exception:
-            pass
-        print('++++++++++++++++++++++++++++++++++++++++++++++++++++++')
-
-
-
-if __name__ == '__main__':
-    dname ="163.com"
-    resolver = resolver.Resolver()
-    resolver.lifetime = 5
-
-    dns = dnsinfo()
-    who = whoisinfo()
-
-    dns.NS(dname)
-    dns.A(dname)
-    dns.SOA(dname)
-    dns.Cname(dname)
-    dns.MX(dname)
-    dns.TXT(dname)
-    dns.PTR(dname)
-
-    who.Whois(dname)
-    who.Ipwhoid(dname)
+            ip = socket.gethostbyname(domain_prefix + self.domain)
+            obj = IPWhois(ip)
+            self.Ipwhoid_dic = obj.lookup_whois()
+        except :
+            self.Ipwhoid_dic = {self.domain:"ipwhois 查询错误"}
+        return self.Ipwhoid_dic
